@@ -1,5 +1,5 @@
-#include " mbed .h"
-#include " crazyflie .h"
+#include "mbed.h"
+#include "crazyflie.h"
 
 // Define motor as PWM output object
 PwmOut motor ( MOTOR1 ) ;
@@ -7,7 +7,7 @@ PwmOut motor ( MOTOR1 ) ;
 float control_motor ( float omega )
 {
 float PWM = a2* pow(omega,2)+a1*omega;
-return PWM
+return PWM;
 }
 
 // Main program
