@@ -7,4 +7,6 @@
 // #include "programs/examples/ex06_flow.h"
 
 // Chapters
-// #include "programs/labs/ch01.h"
+// #include "programs/chapters/ch01.h"
+// #include "programs/chapters/ch02.h"
+#include "programs/chapters/ch04.h"
