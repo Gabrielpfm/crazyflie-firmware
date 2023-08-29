@@ -19,30 +19,31 @@ int main ()
     // Set PWM frequency to 500 Hz
     motor1 . period (1.0/500.0) ;
     // Turn on motor with X rad /s for 0.5s
-    motor1 = control_motor (1000.0) ;
+    motor1 = control_motor (2000.0) ;
     
 
     // Set PWM frequency to 500 Hz
     motor2 . period (1.0/500.0) ;
     // Turn on motor with X rad /s for 0.5s
-    motor2 = control_motor (1000.0) ;
+    motor2 = control_motor (2000.0) ;
   
 
     // Set PWM frequency to 500 Hz
     motor3 . period (1.0/500.0) ;
     // Turn on motor with X rad /s for 0.5s
-    motor3 = control_motor (1000.0) ;
+    motor3 = control_motor (2000.0) ;
   
 
     // Set PWM frequency to 500 Hz
     motor4 . period (1.0/500.0) ;
     // Turn on motor with X rad /s for 0.5s
-    motor4 = control_motor (1000.0) ;
+    motor4 = control_motor (2000.0) ;
     wait(5);
     motor1 = 0;
     motor2 = 0;
     motor3 = 0;
     motor4 = 0;
+    
     // End of program
     while ( true )
     {
