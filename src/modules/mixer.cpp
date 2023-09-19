@@ -2,7 +2,8 @@
 
 // Class constructor
 Mixer ::Mixer()
-    : motor_1(MOTOR1), motor_2(MOTOR2), motor_3(MOTOR3), motor_4(MOTOR4) {
+    : motor_1(MOTOR1), motor_2(MOTOR2), motor_3(MOTOR3), motor_4(MOTOR4),LED_R_R(LED_RED_R), LED_R_L(LED_RED_L), LED_G_R(LED_GREEN_R),
+      LED_G_L(LED_GREEN_L), LED_B_L(LED_BLUE_L) {
   motor_1.period(1.0 / 500.0);
   motor_2.period(1.0 / 500.0);
   motor_3.period(1.0 / 500.0);
@@ -13,12 +14,32 @@ Mixer ::Mixer()
   motor_4 = 0.0;
 }
 
+
 // Função arm retorna armed = true
-Mixer::arm() { armed = true; }
+void Mixer ::arm() {
+  for (int contador = 0; contador < 3; contador = contador + 1) {
+    LED_R_R = false;
+    LED_R_L = false;
+    wait(0.5);
+    LED_R_R = true;
+    LED_R_L = true;
+    wait(0.5);
+  }
+
+  armed = true;
+  LED_R_R = false; // Ligado = False
+  LED_R_L = false;
+  LED_G_L = true; // Desligado = True
+  LED_G_R = true;
+}
 // Função arm retorna armed = false e desliga os motores
-Mixer::disarm() {
-  armed = false;
+void Mixer ::disarm() {
   actuate(0, 0, 0, 0);
+  armed = false;
+  LED_R_R = true;
+  LED_R_L = true;
+  LED_G_L = false;
+  LED_G_R = false;
 }
 // Actuate motors with desired total trust force (N) and torques (N.m)
 void Mixer ::actuate(float f_t, float tau_phi, float tau_theta, float tau_psi) {
