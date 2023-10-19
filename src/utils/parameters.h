@@ -22,4 +22,12 @@ const float a2 = 1.422e-7;
 const float kl = 4.0756e-8;  
 //Constante de Arrasto
 const float kd = 2.2390e-10;
+
+//Delta T
+const float dt = 0.002;
+
+//Frequência de Corte rad/s
+const float wc = 10;
+//Alpha (Fator de Suavização)
+const float alpha = (wc*dt/(1+wc*dt));
 #endif
