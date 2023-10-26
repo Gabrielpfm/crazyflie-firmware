@@ -26,8 +26,8 @@ const float kd = 2.2390e-10;
 //Delta T
 const float dt = 0.002;
 
-//Frequência de Corte rad/s
-const float wc = 10;
+//Frequência de Corte rad/s (Grioscópio - 1/Acelerometro - 10)
+const float wc = 1;
 //Alpha (Fator de Suavização)
 const float alpha = (wc*dt/(1+wc*dt));
 #endif

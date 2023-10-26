@@ -21,6 +21,8 @@ public:
 private:
   // IMU sensor object
   BMI088 imu;
+
+  float pbias, qbias, rbias;
 };
 
 #endif
