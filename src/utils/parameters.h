@@ -30,4 +30,20 @@ const float dt = 0.002;
 const float wc = 1;
 //Alpha (Fator de Suavização)
 const float alpha = (wc*dt/(1+wc*dt));
+
+//Ganhos controlador de atitude
+const float Ts_phi = 0.3;
+const float OS_phi = 0.5/100;
+const float zeta_phi = abs(log(OS_phi))/sqrt(pow(log(OS_phi),2)+pow(pi,2));
+const float wn_phi = 4/(zeta_phi*Ts_phi);
+const float kd_phi = 2*zeta_phi*wn_phi ;
+const float kp_phi = pow(wn_phi,2);
+
+
+const float Ts_psi = 0.6;
+const float OS_psi = 0.5/100;
+const float zeta_psi = abs(log(OS_psi))/sqrt(pow(log(OS_psi),2)+pow(pi,2));
+const float wn_psi = 4/(zeta_psi*Ts_psi);
+const float kd_psi = 2*zeta_psi*wn_psi ;
+const float kp_psi = pow(wn_psi,2);
 #endif
