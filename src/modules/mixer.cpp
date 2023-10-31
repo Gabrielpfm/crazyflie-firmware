@@ -2,7 +2,8 @@
 
 // Class constructor
 Mixer ::Mixer()
-    : motor_1(MOTOR1), motor_2(MOTOR2), motor_3(MOTOR3), motor_4(MOTOR4),LED_R_R(LED_RED_R), LED_R_L(LED_RED_L), LED_G_R(LED_GREEN_R),
+    : motor_1(MOTOR1), motor_2(MOTOR2), motor_3(MOTOR3), motor_4(MOTOR4),
+      LED_R_R(LED_RED_R), LED_R_L(LED_RED_L), LED_G_R(LED_GREEN_R),
       LED_G_L(LED_GREEN_L), LED_B_L(LED_BLUE_L) {
   motor_1.period(1.0 / 500.0);
   motor_2.period(1.0 / 500.0);
@@ -13,7 +14,6 @@ Mixer ::Mixer()
   motor_3 = 0.0;
   motor_4 = 0.0;
 }
-
 
 // Função arm retorna armed = true
 void Mixer ::arm() {
@@ -55,14 +55,10 @@ void Mixer ::actuate(float f_t, float tau_phi, float tau_theta, float tau_psi) {
 // Convert total trust force (N) and torques (N.m) to angular velocities ( rad
 // /s)
 void Mixer ::mixer(float f_t, float tau_phi, float tau_theta, float tau_psi) {
-  float w_ft = f_t / (4 * kl) - tau_phi / (4 * kl * l) +
-               (-tau_theta / (4 * kl * l)) + (-tau_psi / (4 * kd));
-  float w_tauphi = f_t / (4 * kl) + (-tau_phi / (4 * kl * l)) +
-                   (tau_theta / (4 * kl * l)) + (tau_psi / (4 * kd));
-  float w_tautheta = f_t / (4 * kl) + (tau_phi / (4 * kl * l)) +
-                     (tau_theta / (4 * kl * l)) + (-tau_psi / (4 * kd));
-  float w_taupsi = f_t / (4 * kl) + (tau_phi / (4 * kl * l)) +
-                   (-tau_theta / (4 * kl * l)) + (tau_psi / (4 * kd));
+  float w_ft =       f_t / (4 * kl) - tau_phi / (4 * kl * l) - tau_theta / (4 * kl * l) - tau_psi / (4 * kd);
+  float w_tauphi =   f_t / (4 * kl) - tau_phi / (4 * kl * l) + tau_theta / (4 * kl * l) + tau_psi / (4 * kd);
+  float w_tautheta = f_t / (4 * kl) + tau_phi / (4 * kl * l) + tau_theta / (4 * kl * l) - tau_psi / (4 * kd);
+  float w_taupsi =   f_t / (4 * kl) + tau_phi / (4 * kl * l) - tau_theta / (4 * kl * l) + tau_psi / (4 * kd);
 
   if (w_ft > 0) {
     omega_1 = sqrt(w_ft);

@@ -19,31 +19,34 @@ const float a1 = 5.117e-12;
 const float a2 = 1.422e-7;
 
 // Constante de Sustentação
-const float kl = 4.0756e-8;  
+//const float kl = 4.0756e-8;  
+const float kl = 1.7e-8;
 //Constante de Arrasto
-const float kd = 2.2390e-10;
+//const float kd = 2.2390e-10;
+const float kd = 1.4e-10;
 
 //Delta T
 const float dt = 0.002;
 
 //Frequência de Corte rad/s (Grioscópio - 1/Acelerometro - 10)
-const float wc = 1;
+const float wc = 1.0;
 //Alpha (Fator de Suavização)
-const float alpha = (wc*dt/(1+wc*dt));
+const float alpha = (wc*dt/(1.0+wc*dt));
 
 //Ganhos controlador de atitude
 const float Ts_phi = 0.3;
-const float OS_phi = 0.5/100;
+const float OS_phi = 0.5/100.0;
 const float zeta_phi = abs(log(OS_phi))/sqrt(pow(log(OS_phi),2)+pow(pi,2));
-const float wn_phi = 4/(zeta_phi*Ts_phi);
-const float kd_phi = 2*zeta_phi*wn_phi ;
+const float wn_phi = 4.0/(zeta_phi*Ts_phi);
+const float kd_phi = 2.0*zeta_phi*wn_phi ;
 const float kp_phi = pow(wn_phi,2);
 
 
 const float Ts_psi = 0.6;
-const float OS_psi = 0.5/100;
+const float OS_psi = 0.5/100.0;
 const float zeta_psi = abs(log(OS_psi))/sqrt(pow(log(OS_psi),2)+pow(pi,2));
-const float wn_psi = 4/(zeta_psi*Ts_psi);
-const float kd_psi = 2*zeta_psi*wn_psi ;
+const float wn_psi = 4.0/(zeta_psi*Ts_psi);
+const float kd_psi = 2.0*zeta_psi*wn_psi ;
 const float kp_psi = pow(wn_psi,2);
+
 #endif

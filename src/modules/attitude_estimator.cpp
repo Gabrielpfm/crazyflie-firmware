@@ -13,8 +13,8 @@ AttitudeEstimator ::AttitudeEstimator() : imu(IMU_SDA, IMU_SCL) {
   r = 0;
   //
     pbias = 0;
-    rbias = 0;
     qbias = 0;
+    rbias = 0;
 }
 
 // Initialize class
@@ -24,8 +24,8 @@ void AttitudeEstimator ::init() {
     {
         imu.read();
         pbias += imu.gx/500.0;
-        rbias += imu.gy/500.0;
-        qbias += imu.gz/500.0;
+        qbias += imu.gy/500.0;
+        rbias += imu.gz/500.0;
         wait(dt);
     }
 }
