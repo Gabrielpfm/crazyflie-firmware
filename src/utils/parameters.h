@@ -29,7 +29,7 @@ const float kd = 1.4e-10;
 const float dt = 0.002;
 
 //Frequência de Corte rad/s (Grioscópio - 1/Acelerometro - 10)
-const float wc = 1.0;
+const float wc = 10.0;
 //Alpha (Fator de Suavização)
 const float alpha = (wc*dt/(1.0+wc*dt));
 
@@ -48,5 +48,17 @@ const float zeta_psi = abs(log(OS_psi))/sqrt(pow(log(OS_psi),2)+pow(pi,2));
 const float wn_psi = 4.0/(zeta_psi*Ts_psi);
 const float kd_psi = 2.0*zeta_psi*wn_psi ;
 const float kp_psi = pow(wn_psi,2);
+
+
+//Freqência Range
+const float dt_range = 0.05;
+
+//Fator de amortecimento 
+const float zeta = sqrt(2)/2;
+
+//Ganhos Vertical Estimator
+const float l1 = pow(wc,2);
+const float l2 = 2*zeta*wc;
+
 
 #endif
