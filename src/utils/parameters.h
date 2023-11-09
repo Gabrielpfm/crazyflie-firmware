@@ -60,5 +60,10 @@ const float zeta = sqrt(2)/2;
 const float l1 = pow(wc,2);
 const float l2 = 2*zeta*wc;
 
+//Ganhos controlador vertical 
+const float kp_vert = 7.9607;
+const float kd_vert = 3.9902;
+
+
 
 #endif
