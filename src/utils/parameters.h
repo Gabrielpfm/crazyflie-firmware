@@ -61,8 +61,12 @@ const float l1 = pow(wc,2);
 const float l2 = 2*zeta*wc;
 
 //Ganhos controlador vertical 
-const float kp_vert = 7.9607;
-const float kd_vert = 3.9902;
+const float Ts_ver = 2.0;
+const float OS_ver = 0.5/100.0;
+const float zeta_ver = abs(log(OS_ver))/sqrt(pow(log(OS_ver),2)+pow(pi,2));
+const float wn_ver = 4.0/(zeta_ver*Ts_ver);
+const float kd_ver = 2.0*zeta_ver*wn_ver ;
+const float kp_ver = pow(wn_ver,2);
 
 
 
