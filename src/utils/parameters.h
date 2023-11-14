@@ -68,6 +68,12 @@ const float wn_ver = 4.0/(zeta_ver*Ts_ver);
 const float kd_ver = 2.0*zeta_ver*wn_ver ;
 const float kp_ver = pow(wn_ver,2);
 
+//Parâmetros Sensor Fluxo Óptico
+const float gama = 42.0*pi/180.0;//Graus
+const float W = 420.0; //Pixels
+const float sigma = 2.0 * tan(gama/2.0)/(W*dt);
+const float l_h = 50.0;
+
 
 
 #endif
