@@ -29,7 +29,7 @@ const float kd = 1.4e-10;
 const float dt = 0.002;
 
 //Frequência de Corte rad/s (Grioscópio - 1/Acelerometro - 10)
-const float wc = 10.0;
+const float wc = 1.0;
 //Alpha (Fator de Suavização)
 const float alpha = (wc*dt/(1.0+wc*dt));
 
@@ -57,8 +57,9 @@ const float dt_range = 0.05;
 const float zeta = sqrt(2)/2;
 
 //Ganhos Vertical Estimator
-const float l1 = pow(wc,2);
-const float l2 = 2*zeta*wc;
+const float wc_ver = 10.0;
+const float l1 = pow(wc_ver,2);
+const float l2 = 2*zeta*wc_ver;
 
 //Ganhos controlador vertical 
 const float Ts_ver = 2.0;
@@ -73,6 +74,14 @@ const float gama = 42.0*pi/180.0;//Graus
 const float W = 420.0; //Pixels
 const float sigma = 2.0 * tan(gama/2.0)/(W*dt);
 const float l_h = 50.0;
+
+//Ganhos controlador horizontal
+const float Ts_hor = 2.0;
+const float OS_hor = 0.5/100.0;
+const float zeta_hor = abs(log(OS_hor))/sqrt(pow(log(OS_hor),2)+pow(pi,2));
+const float wn_hor = 4.0/(zeta_hor*Ts_hor);
+const float kd_hor = 2.0*zeta_hor*wn_hor ;
+const float kp_hor = pow(wn_hor,2);
 
 
 

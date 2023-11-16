@@ -19,6 +19,7 @@ AttitudeEstimator ::AttitudeEstimator() : imu(IMU_SDA, IMU_SCL) {
 
 // Initialize class
 void AttitudeEstimator ::init() {
+    wait(1); 
     imu.init();
     for (int i=0; i<500;i++)
     {
