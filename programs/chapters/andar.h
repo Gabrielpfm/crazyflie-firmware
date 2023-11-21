@@ -31,6 +31,7 @@ int main() {
   float y_r = 0.0;
   float psi_r = 0.0;
   float h = 0.5;
+  float d = 2;
   // Initialize estimators objects
   att_est.init();
   ver_est.init();
@@ -55,15 +56,19 @@ int main() {
       if (t < td)
       {
         z_r = (h/td)*t;
+        x_r = 0;
       }
       else if (t<td+tv)  {
           z_r = h;
+          x_r = (d/tv)*t - (d/tv)*td;
       }
       else if (t<t_tot) {
           z_r = -(h/tp)*t + (h/tp)*(t_tot);
+          x_r = d;
       }
       else {
           z_r = 0;
+          x_r = d;
       }
       att_est.estimate();
       ver_est.predict(ver_cont.f_t);
